@@ -43,7 +43,21 @@ public class SolverTest {
     public void solve_addition_overprioritize_substraction() {
         assertEquals(solverService.solve("20-5+3+2"), 10);
     }
+    @Test
 
+    public void solve_multiply() {
+
+	    assertEquals(solverService.solve("5*3"), 15);
+
+    }
+
+    @Test
+
+    public void solve_multiplication_overprioritize_addition() {
+
+	    assertEquals(solverService.solve("10-5*3+2"), -7);
+
+    }
     @Test
     public void solve_error() {
         assertThrows(WebApplicationException.class, () -> solverService.solve("5+"));

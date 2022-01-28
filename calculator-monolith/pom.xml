@@ -58,12 +58,54 @@
     </resources>
     <plugins>
       <plugin>
+
+	      <groupId>org.apache.maven.plugins</groupId>
+
+	      <artifactId>maven-checkstyle-plugin</artifactId>
+
+	      <version>3.1.1</version>
+
+	      <configuration>
+
+		      <consoleOutput>true</consoleOutput>
+
+		      <failsOnError>false</failsOnError>
+
+		      <linkXRef>false</linkXRef>
+
+		      <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
+
+	      </configuration>
+
+	      <executions>
+
+		      <execution>
+
+			      <id>validate</id>
+
+			      <phase>validate</phase>
+
+			      <goals>
+
+				      <goal>check</goal>
+
+			      </goals>
+
+		      </execution>
+
+	      </executions>
+
+      </plugin>
+      <plugin>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
         <version>${quarkus-plugin.version}</version>
         <executions>
-          <execution>
-            <goals>
+          <execution>  
+	    <goals>
+              <goal>check</goal>
+
+	      <goal>cpd-check</goal>
               <goal>generate-code</goal>
               <goal>generate-code-tests</goal>
               <goal>build</goal>
@@ -79,7 +121,8 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire-plugin.version}</version>
         <configuration>
-          <systemPropertyVariables>
+          <minimumTokens>25</minimumTokens>	
+	  <systemPropertyVariables>
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>

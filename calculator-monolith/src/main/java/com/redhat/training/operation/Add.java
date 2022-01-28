@@ -13,12 +13,12 @@ import javax.inject.Inject;
 import com.redhat.training.service.SolverService;
 
 @ApplicationScoped
-public final class Add implements Operation {
+public final class Add extends BinaryOperation {
     private static final String REGEX = "(.+)\\+(.+)";
     private static final BinaryOperator<Float> OPERATOR = (lhs, rhs) -> lhs + rhs;
 
     public Add() {
-        super();
+        super(OPERATOR, REGEX);
     }
 
     @Override

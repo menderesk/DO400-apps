@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 
 import com.redhat.training.operation.Add;
 import com.redhat.training.operation.Identity;
+import com.redhat.training.operation.Multiply;
 import com.redhat.training.operation.Operation;
 import com.redhat.training.operation.Substract;
 import com.redhat.training.service.SolverService;
@@ -19,6 +20,9 @@ import org.slf4j.LoggerFactory;
 
 public final class SolverResource implements SolverService {
     private static final Logger LOG = LoggerFactory.getLogger(SolverResource.class);
+    @Inject
+
+    Multiply multiply;
 
     @Inject
     Add add;
